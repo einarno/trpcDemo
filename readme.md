@@ -1,4 +1,4 @@
-# TRPC type how to write type safe API
+# TRPC how to write type safe API
 
 What is TRPC?
 
