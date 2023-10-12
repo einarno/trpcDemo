@@ -15,17 +15,7 @@ const appRouter = router({
                 text: "hello"
             };
         }),
-    getBooks: publicProcedure
-        .query(() => {
-            return getBooks();
-        }),
-    getBooksUrl: publicProcedure
-        .input(z.string())
-        .query(({ input }) => {
-            return {
-                url: getBookUrl(input),
-            };
-        }),
+
 });
 
 // export only the type definition of the API

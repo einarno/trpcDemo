@@ -4,7 +4,7 @@ What is TRPC?
 
 ## What problems does TRPC solve
 
-- Rest endpoints (speed)
+- Endpoints (speed)
 - Complex type
 - Middleware
 - Http
