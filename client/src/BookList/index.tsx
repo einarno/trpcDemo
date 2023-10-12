@@ -1,19 +1,47 @@
-import { Stack, Typography } from "@mui/material"
+import { Button, Card, CardContent, CardHeader, Grid, Paper, Stack, Typography } from "@mui/material"
+import { useState } from "react"
+import { BookPicker } from "../BookPicker"
 
-type Book = {
+export type Book = {
     id: string
     title: string
-}
-
-type Props = {
-    books: Book[]
+    description: string
+    author: string
 }
 
 export const BookList = () => {
+    const [open, setOpen] = useState(false)
+    const [books, setBooks] = useState<Book[]>([])
+    const setBook = (book: Book) => {
+        setBooks((prev) => [...new Set([...prev, book])])
+    }
     return (
-        <Stack>
-            <Typography variant="h1">Book List</Typography>
-            <Typography variant="body1">Currently no books</Typography>
-        </Stack>
+        <Paper sx={{ backgroundColor: "Background" }}>
+            <Grid container minHeight="100vh">
+                <Stack gap={1}>
+                    <Stack direction="row" gap={5}>
+                        <Typography variant="h1">Book List</Typography>
+                        <Button onClick={() => setOpen(true)} variant="outlined">Add Book</Button>
+                        <BookPicker isOpen={open} onClose={() => setOpen(false)} setBook={setBook} />
+                    </Stack>
+                    {books.length === 0 ? <Typography variant="body1">Currently no books</Typography>
+                        : <Stack gap={1}>
+                            {
+                                books.map((book) => (
+                                    <Card sx={{ backgroundColor: "Highlight" }}>
+                                        <CardContent>
+                                            <Typography variant="h3">{book.title}</Typography>
+                                            <Typography variant="body1">{book.description}</Typography>
+                                            <Typography variant="body2">{book.author}</Typography>
+                                        </CardContent>
+                                    </Card>
+                                ))
+                            }
+
+                        </Stack>
+                    }
+                </Stack>
+            </Grid>
+        </Paper>
     )
 }
