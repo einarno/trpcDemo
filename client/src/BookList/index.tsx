@@ -1,6 +1,8 @@
-import { Button, Card, CardContent, CardHeader, Grid, Paper, Stack, Typography } from "@mui/material"
+import { Button, Card, CardContent, Grid, Paper, Stack, Typography } from "@mui/material"
 import { useState } from "react"
 import { BookPicker } from "../BookPicker"
+import { BookImage } from "../BookImage"
+import { BookComponent } from "../Book"
 
 export type Book = {
     id: string
@@ -30,14 +32,11 @@ export const BookList = () => {
                                 books.map((book) => (
                                     <Card sx={{ backgroundColor: "Highlight" }}>
                                         <CardContent>
-                                            <Typography variant="h3">{book.title}</Typography>
-                                            <Typography variant="body1">{book.description}</Typography>
-                                            <Typography variant="body2">{book.author}</Typography>
+                                            <BookComponent book={book} />
                                         </CardContent>
                                     </Card>
                                 ))
                             }
-
                         </Stack>
                     }
                 </Stack>

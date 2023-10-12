@@ -21,13 +21,14 @@ export const getBooks = () => {
 
     ]
 }
+export type BookUrl = { status: "success", url: string } | { status: "couldNotFind" } | { status: "loading" } | { status: "error" }
 
-export const getBookUrl = (id: string) => {
+export const getBookUrl = (id: string): BookUrl => {
     if (id === '3') {
-        return "https://ia600607.us.archive.org/view_archive.php?archive=/22/items/olcovers24/olcovers24-L.zip&file=240727-L.jpg"
+        return { status: "success", url: "https://ia600607.us.archive.org/view_archive.php?archive=/22/items/olcovers24/olcovers24-L.zip&file=240727-L.jpg" }
     }
     if (id === '2') {
-        throw new Error("No url for this book");
+        return { status: "error" }
     }
-    return undefined;
+    return { status: "couldNotFind" };
 }

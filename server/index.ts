@@ -6,7 +6,7 @@ import { createHTTPServer } from '@trpc/server/adapters/standalone';
 import cors from 'cors';
 import { z } from 'zod';
 import { publicProcedure, router } from './middleware';
-import { getBooks } from './helpers/books';
+import { getBookUrl, getBooks } from './src/utils/books';
 
 const appRouter = router({
     placeholder: publicProcedure
@@ -18,6 +18,13 @@ const appRouter = router({
     getBooks: publicProcedure
         .query(() => {
             return getBooks();
+        }),
+    getBooksUrl: publicProcedure
+        .input(z.string())
+        .query(({ input }) => {
+            return {
+                url: getBookUrl(input),
+            };
         }),
 });
 
