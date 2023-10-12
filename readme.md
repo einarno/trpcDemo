@@ -2,10 +2,11 @@
 
 What is TRPC?
 
-## What problems does TRPC solve a
+## What problems does TRPC solve
 
 - Rest endpoints (speed)
 - Complex type
+- Middleware
 - Http
 
 ## Other good stuff
