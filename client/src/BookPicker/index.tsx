@@ -9,8 +9,7 @@ type Props = {
 }
 
 export const BookPicker: React.FC<Props> = ({ isOpen, onClose, setBook }) => {
-    // const books = trpc.getBooks.useQuery()
-    const books: any = []
+    const books = trpc.getBooks.useQuery()
     return (
         <Dialog open={isOpen} onClose={onClose}>
             <DialogTitle>Pick a book</DialogTitle>
